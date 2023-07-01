@@ -17,7 +17,7 @@ export LLVM=$(pwd)
 export PATH=$(pwd)/_install/bin:$PATH
 ```
 
-## Compile and run a test program
+## Compile a test program
 1) First, move to "./test"
 ```
 cd ./test
