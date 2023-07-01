@@ -5,7 +5,6 @@ git cmake python-dev libncurses5-dev swig libedit-dev libxml2-dev build-essentia
 ```
 
 ## Clone Git Repository
-Clone LLVM.
 ```
 git clone --recurse-submodules https://github.com/yonghaekim/riscv-llvm-example.git
 ```
@@ -19,12 +18,12 @@ export PATH=$(pwd)/_install/bin:$PATH
 ```
 
 ## Compile and run a test program
-First, move to "./test"
+1) First, move to "./test"
 ```
 cd ./test
 ```
 
-Emit the IR file of a test program
+2) Emit the IR file of a test program
 ```
 clang++ -O3 -march=rv64imac -mabi=lp64 -static --target=riscv64-unknown-linux-gnu \
 -Wall -Wextra -fPIC -fvisibility=hidden --sysroot=$LLVM/sysroot \
@@ -33,12 +32,12 @@ clang++ -O3 -march=rv64imac -mabi=lp64 -static --target=riscv64-unknown-linux-gn
 -S -emit-llvm test.c -o test.ll
 ```
 
-Apply DPT passes to the IR file
+3) Apply DPT passes to the IR file
 ```
 opt -O0 -dpt-tag -dpt-type=dpt-h -S test.ll -o test_inst.ll
 ```
 
-Compile the instrumented IR file
+4) Compile the instrumented IR file
 ```
 clang++ -O3 -march=rv64imac -mabi=lp64 -static --target=riscv64-unknown-linux-gnu \
 -Wall -Wextra -fPIC -fvisibility=hidden --sysroot=$LLVM/sysroot \
