@@ -1,5 +1,8 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int main(void) {
-	printf("Hello, World!\n");
+	char *buf = (char *) malloc(20);
+	sprintf(buf, "Hello, World!\n");
+	printf("%s", buf);
 }
