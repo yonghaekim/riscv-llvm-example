@@ -1,0 +1,3 @@
+[submodule "riscv-llvm"]
+	path = riscv-llvm
+	url = https://github.com/yonghaekim/riscv-llvm.git
