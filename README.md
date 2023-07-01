@@ -10,7 +10,7 @@ Clone LLVM.
 git clone --recurse-submodules https://github.com/yonghaekim/riscv-llvm-example.git
 ```
 
-## Build LLVM add Add to library path
+## Build LLVM and Add LLVM path to $PATH
 ```
 ./build.sh
 export LLVM=$(pwd)
@@ -18,7 +18,12 @@ export PATH=$(pwd)/_install/bin:$PATH
 ```
 
 ## Compile and run a test program
-Emit an IR file of a test program
+First, move to ./test ...
+```
+cd ./test
+```
+
+Emit the IR file of a test program
 ```
 clang++ -O3 -march=rv64imac -mabi=lp64 -static --target=riscv64-unknown-linux-gnu \
 -Wall -Wextra -fPIC -fvisibility=hidden --sysroot=$LLVM/sysroot \
