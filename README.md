@@ -12,13 +12,14 @@ git clone --recurse-submodules https://github.com/yonghaekim/riscv-llvm-example.
 
 ## Build LLVM and Add LLVM path to $PATH
 ```
+cd riscv-llvm-example
 ./build.sh
 export LLVM=$(pwd)
 export PATH=$(pwd)/_install/bin:$PATH
 ```
 
 ## Compile and run a test program
-First, move to ./test ...
+First, move to "./test"
 ```
 cd ./test
 ```
