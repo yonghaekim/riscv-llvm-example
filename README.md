@@ -9,11 +9,12 @@ git cmake python-dev libncurses5-dev swig libedit-dev libxml2-dev build-essentia
 git clone --recurse-submodules https://github.com/yonghaekim/riscv-llvm-example.git
 ```
 
-## Build LLVM and Add LLVM path to $PATH
+## Build riscv-gnu-toolchain 
 ```
 cd riscv-llvm-example
 cd riscv-gnu-toolchain
 ./configure --prefix=$PWD/../_install --enable-multilib --target=riscv64-linux-gnu
+make linux
 ```
 
 ## Build LLVM and Add LLVM path to $PATH
