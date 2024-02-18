@@ -25,9 +25,9 @@ export PATH=$(pwd)/_install/bin:$PATH
 ```
 
 ## Compile a test program
-1) First, move to "./test"
+1) First, move to "./ex_test"
 ```
-cd ./test
+cd ./ex_test
 ```
 
 2) Emit the IR file of a test program
