@@ -7,6 +7,6 @@ cmake -G Ninja -DCMAKE_BUILD_TYPE="Release" \
 	-DLLVM_ENABLE_PROJECTS="clang;lld" \
   -DLLVM_TARGETS_TO_BUILD="RISCV" \
 	-DLLVM_ENABLE_DUMP=ON \
-  ./riscv-llvm/llvm
+  ./llvm-project/llvm
 
 cmake --build . --target install
