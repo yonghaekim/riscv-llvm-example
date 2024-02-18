@@ -20,7 +20,7 @@ make linux
 ## Build LLVM and Add LLVM path to $PATH
 ```
 ./build.sh
-export LLVM=$(pwd)
+export EX_HOME=$(pwd)
 export PATH=$(pwd)/_install/bin:$PATH
 ```
 
@@ -32,24 +32,24 @@ cd ./test
 
 2) Emit the IR file of a test program
 ```
-clang++ -O3 -march=rv64imac -mabi=lp64 -static --target=riscv64-unknown-linux-gnu \
--Wall -Wextra -fPIC -fvisibility=hidden --sysroot=$LLVM/sysroot \
--I$LLVM/sysroot/usr/include -B$LLVM/riscv64-unknown-linux-gnu \
--L$LLVM/riscv64-unknown-linux-gnu \
+clang -O3 -march=rv64imac -mabi=lp64 -static --target=riscv64-unknown-linux-gnu \
+-Wall -Wextra -fPIC -fvisibility=hidden --sysroot=$EX_HOME/_install/sysroot \
+-I$EX_HOME/_install/sysroot/usr/include -B$EX_HOME/_install/riscv64-unknown-linux-gnu \
+-L$EX_HOME/_install/riscv64-unknown-linux-gnu \
 -S -emit-llvm test.c -o test.ll
 ```
 
 3) Apply DPT passes to the IR file
 ```
-opt -O0 -dpt-tag -dpt-type=dpt-h -S test.ll -o test_inst.ll
+opt -dpt-type=dpt-h -dpt-tag -enable-new-pm=0 -S test.ll -o test_inst.ll
 ```
 
 4) Compile the instrumented IR file
 ```
-clang++ -O3 -march=rv64imac -mabi=lp64 -static --target=riscv64-unknown-linux-gnu \
--Wall -Wextra -fPIC -fvisibility=hidden --sysroot=$LLVM/sysroot \
--I$LLVM/sysroot/usr/include -B$LLVM/riscv64-unknown-linux-gnu \
--L$LLVM/riscv64-unknown-linux-gnu \
+clang -O3 -march=rv64imac -mabi=lp64 -static --target=riscv64-unknown-linux-gnu \
+-Wall -Wextra -fPIC -fvisibility=hidden --sysroot=$EX_HOME/_install/sysroot \
+-I$EX_HOME/_install/sysroot/usr/include -B$EX_HOME/_install/riscv64-unknown-linux-gnu \
+-L$EX_HOME/_install/riscv64-unknown-linux-gnu \
 test_inst.ll dpt_lib.o -o test_inst
 ```
 
